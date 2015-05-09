@@ -1,0 +1,33 @@
+{
+  "name": "simple-email-validator",
+  "version": "1.0.0",
+  "description": "A dead simple email validator",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wesleytodd/simple-email-validator"
+  },
+  "keywords": [
+    "email",
+    "validation",
+    "validator",
+    "for",
+    "input"
+  ],
+  "author": "Wes Todd",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wesleytodd/simple-email-validator/issues"
+  },
+  "homepage": "https://github.com/wesleytodd/simple-email-validator",
+  "dependencies": {
+    "custom-error": "^0.2.1"
+  },
+  "devDependencies": {
+    "is-error": "^2.0.0",
+    "mocha": "^2.2.4"
+  }
+}

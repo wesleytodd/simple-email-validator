@@ -2,9 +2,9 @@
 
 A super simple email validator.  Rather than maintaining a complicated email regular expression, this module just ensures that the string exists and has an `@` with characters before and after.
 
-    > Just send them an email already
+> Just send them an email already
 
-- David Celis (http://davidcel.is/posts/stop-validating-email-addresses-with-regex/)
+- [David Celis](http://davidcel.is/posts/stop-validating-email-addresses-with-regex/)
 
 This module also assumes you want to know why an email is not valid.  So rather than just returning a `true`/`false` it returns `true`/`Error`.  You can then log and introspect on the error to know why the email is not valid.  Get your regular express to do that!
 
@@ -22,7 +22,7 @@ var isEmail = require('simple-email-validation'),
 
 var err = isEmail('not an email');
 if (isError(err)) {
-	throw new Error(); // not an email does not have an @ symbol
+	throw err; // not an email does not have an @ symbol
 }
 
 if (isEmail('hi@gmail.com') === true) {
@@ -37,9 +37,20 @@ if (isEmail('hi@gmail.com') === true) {
 
 To enable configurable messages and internationalization this module allows you to overrrde the error messages.  The second paramter is an object containing message strings that are passed to `util.format`.  For example:
 
-``javascript
+```javascript
 var err = isEmail(null, {
 	typeError: '%s no es una cadena'
 });
 console.log(err.message); // null no es una cadena
+```
+
+## Checking Errors
+
+Because this module does not return `false` it is reccomended that you use [is-error](https://github.com/Raynos/is-error) to check that the return value is not an instance of `Error`.  But you can also check the error manually like this:
+
+```javascript
+var err = isEmail('@nouser.com');
+if (err instanceof Error) {
+	throw err; // @nouser.com is missing the user
+}
 ```
